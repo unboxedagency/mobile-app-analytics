@@ -34,6 +34,8 @@ com.google.firebase:firebase-auth:{{VERSION}} (if we use Authentication)
 
 com.crashlytics.sdk.android:crashlytics:{{VERSION}}
 
+com.google.firebase:firebase-dynamic-links:{{VERSION}}
+
 com.google.firebase:firebase-inappmessaging:{{VERSION}}
 
 com.google.firebase:firebase-messaging:{{VERSION}}

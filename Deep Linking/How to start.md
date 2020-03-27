@@ -1,6 +1,6 @@
 1. Update Firebase SDK where applicable (both for iOS & Android for native apps)
 
-	Go to SDK details: https://github.com/unboxedagency/mobile-app-analytics/blob/master/Firebase/FirebaseSDK(Pods)
+	Go to SDK details: https://github.com/unboxedagency/mobile-app-analytics/blob/master/Firebase/Firebase%20SDK%20(Pods)
 
 	*** Official documentation
 	

@@ -1,0 +1,32 @@
+> SDK DETAILS
+
+	// iOS SDK ~ NOTE: Check versions here: https://firebase.google.com/docs/ios/setup
+
+	// Firebase iOS SDK: https://github.com/firebase/firebase-ios-sdk
+
+	You no longer need to add the iOS pod Firebase/Core. This SDK included the Firebase SDK for Google Analytics. Now, to use Analytics (or any of the Firebase products that require or recommend the use of Analytics), you need to explicitly add the Analytics pod: Firebase/Analytics.
+
+		pod 'Firebase/Analytics'
+		pod 'Firebase/Auth' (if we use Authentication)
+		pod 'Firebase/Crashlytics'
+		pod 'Firebase/DynamicLinks' (add this even if we use other deep linking solutions)
+		pod 'Firebase/InAppMessaging'
+		pod 'Firebase/Messaging'
+		pod 'Firebase/Performance'
+		pod 'Firebase/RemoteConfig'
+
+	// Android SDK (Java) ~ NOTE: Check versions here: https://firebase.google.com/docs/android/setup
+
+	// Firebase Android SDK: https://github.com/firebase/firebase-android-sdk
+
+	You no longer need to add the Android library com.google.firebase:firebase-core. This SDK included the Firebase SDK for Google Analytics. Now, to use Analytics (or any of the Firebase products that require or recommend the use of Analytics), you need to explicitly add the Analytics dependency: com.google.firebase:firebase-analytics:17.2.2.
+
+		com.google.firebase:firebase-analytics:{{VERSION}}
+		com.google.firebase:firebase-appindexing:{{VERSION}}
+		com.google.firebase:firebase-auth:{{VERSION}} (if we use Authentication)
+		com.crashlytics.sdk.android:crashlytics:{{VERSION}}
+		com.google.firebase:firebase-dynamic-links:{{VERSION}}
+		com.google.firebase:firebase-inappmessaging:{{VERSION}}
+		com.google.firebase:firebase-messaging:{{VERSION}}
+		com.google.firebase:firebase-database:{{VERSION}}
+		com.google.firebase:firebase-config:{{VERSION}}

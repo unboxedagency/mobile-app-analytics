@@ -64,8 +64,13 @@
 		        "apps": [],
 		        "details": [{
 			        "appID": "your-app-ID.com.example.app",
-			        "paths": [ "*", "/", "/example-path/*", "NOT /private-directory/*" ]
-		        }]
+			        "paths": [
+						"NOT /private-directory/*",
+				 		"/example-path/*",
+						"/",
+						"*"
+					]
+				}]
 	      }
  	}
   
@@ -75,8 +80,13 @@
 		"applinks": {
 			"apps": [],
 		        "details": [{
-				"appID": "your-app-ID.com.example.app",
-				"paths": [ "*", "/", "/example-path/*", "NOT /private-directory/*" ]
+					"appID": "your-app-ID.com.example.app",
+					"paths": [
+						"NOT /private-directory/*",
+				 		"/example-path/*",
+						"/",
+						"*"
+					]
 		        }]
 	      	},
 	      	"webcredentials": {

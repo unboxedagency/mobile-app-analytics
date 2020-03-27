@@ -28,5 +28,7 @@
 	- Create intent filters in your manifest
 	- Add code to your app’s activities to handle incoming links
 	- Associate your app and your website with Digital Asset Links
+	- Create a Digital Asset Links JSON file "assetlinks.json
+    	The file should be added on your /.well-known/ directory (for example: https://www.yourdomain.com/.well-known/assetlinks.json)
 	
 	DETAILS: https://developer.android.com/studio/write/app-link-indexing

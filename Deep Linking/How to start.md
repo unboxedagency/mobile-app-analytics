@@ -2,7 +2,7 @@
 
 	Go to SDK details: https://github.com/unboxedagency/mobile-app-analytics/blob/master/Firebase/FirebaseSDK(Pods)
 
-	Official documentation
+	*** Official documentation
 	
 	- For iOS: https://firebase.google.com/docs/ios/setup
 		
@@ -14,6 +14,10 @@
     
     
 2. Add support for Universal Links (iOS)
+
+	Go to Handling Links details: https://github.com/unboxedagency/mobile-app-analytics/blob/master/Deep%20Linking/HandlingLinks
+	
+	*** Official documentation
 
 	- For iOS: https://developer.apple.com/library/archive/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW2
 	

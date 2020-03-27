@@ -1,122 +1,127 @@
 1. Update Firebase SDK where applicable (both for iOS & Android for native apps)
-
-  > SDK DETAILS
+	
+	> SDK DETAILS
   
-  // iOS SDK ~ NOTE: Check versions here: https://firebase.google.com/docs/ios/setup
+  	// iOS SDK ~ NOTE: Check versions here: https://firebase.google.com/docs/ios/setup
 
-  // Firebase iOS SDK: https://github.com/firebase/firebase-ios-sdk
+  	// Firebase iOS SDK: https://github.com/firebase/firebase-ios-sdk
 
-  You no longer need to add the iOS pod Firebase/Core. This SDK included the Firebase SDK for Google Analytics. Now, to use Analytics (or any of the Firebase products that require or recommend the use of Analytics), you need to explicitly add the Analytics pod: Firebase/Analytics.
+  	
+	You no longer need to add the iOS pod Firebase/Core. This SDK included the Firebase SDK for Google Analytics. Now, to use Analytics (or any of the Firebase products that require or recommend the use of Analytics), you need to explicitly add the Analytics pod: Firebase/Analytics.
 
-    pod 'Firebase/Analytics'
+    	
+	pod 'Firebase/Analytics'
 
-    pod 'Firebase/Auth' (if we use Authentication)
+    	pod 'Firebase/Auth' (if we use Authentication)
 
-    pod 'Firebase/Crashlytics'
+    	pod 'Firebase/Crashlytics'
 
-    pod 'Firebase/DynamicLinks' (add this even if we use other deep linking solutions)
+    	pod 'Firebase/DynamicLinks' (add this even if we use other deep linking solutions)
 
-    pod 'Firebase/InAppMessaging'
+    	pod 'Firebase/InAppMessaging'
 
-    pod 'Firebase/Messaging'
+    	pod 'Firebase/Messaging'
 
-    pod 'Firebase/Performance'
+    	pod 'Firebase/Performance'
 
-    pod 'Firebase/RemoteConfig'
+    	pod 'Firebase/RemoteConfig'
 
-  // Android SDK (Java) ~ NOTE: Check versions here: https://firebase.google.com/docs/android/setup
+  	
+	// Android SDK (Java) ~ NOTE: Check versions here: https://firebase.google.com/docs/android/setup
 
-  // Firebase Android SDK: https://github.com/firebase/firebase-android-sdk
+  	// Firebase Android SDK: https://github.com/firebase/firebase-android-sdk
 
-  You no longer need to add the Android library com.google.firebase:firebase-core. This SDK included the Firebase SDK for Google Analytics. Now, to use Analytics (or any of the Firebase products that require or recommend the use of Analytics), you need to explicitly add the Analytics dependency: com.google.firebase:firebase-analytics:17.2.2.
+  	
+	You no longer need to add the Android library com.google.firebase:firebase-core. This SDK included the Firebase SDK for Google Analytics. Now, to use Analytics (or any of the Firebase products that require or recommend the use of Analytics), you need to explicitly add the Analytics dependency: com.google.firebase:firebase-analytics:17.2.2.
 
-    com.google.firebase:firebase-analytics:{{VERSION}}
+    	
+	com.google.firebase:firebase-analytics:{{VERSION}}
 
-    com.google.firebase:firebase-appindexing:{{VERSION}}
+    	com.google.firebase:firebase-appindexing:{{VERSION}}
 
-    com.google.firebase:firebase-auth:{{VERSION}} (if we use Authentication)
+    	com.google.firebase:firebase-auth:{{VERSION}} (if we use Authentication)
 
-    com.crashlytics.sdk.android:crashlytics:{{VERSION}}
+    	com.crashlytics.sdk.android:crashlytics:{{VERSION}}
 
-    com.google.firebase:firebase-dynamic-links:{{VERSION}}
+    	com.google.firebase:firebase-dynamic-links:{{VERSION}}
 
-    com.google.firebase:firebase-inappmessaging:{{VERSION}}
+    	com.google.firebase:firebase-inappmessaging:{{VERSION}}
 
-    com.google.firebase:firebase-messaging:{{VERSION}}
+    	com.google.firebase:firebase-messaging:{{VERSION}}
 
-    com.google.firebase:firebase-database:{{VERSION}}
+    	com.google.firebase:firebase-database:{{VERSION}}
 
-    com.google.firebase:firebase-config:{{VERSION}}
+    	com.google.firebase:firebase-config:{{VERSION}}
 
 2. Enable Dynamic Links
 
-  > If #1 is completed then Dynamic Links are enabled, in particular:
+	> If #1 is completed then Dynamic Links are enabled, in particular:
   
-      for iOS: pod 'Firebase/DynamicLinks' (add this even if we use other deep linking solutions)
+     	for iOS: pod 'Firebase/DynamicLinks' (add this even if we use other deep linking solutions)
 
-      for Android: com.google.firebase:firebase-dynamic-links:{{VERSION}}
+      	for Android: com.google.firebase:firebase-dynamic-links:{{VERSION}}
     
 3. Add support for Universal Links (iOS) and App Links (Android)
 
-  for iOS 12 and above: 
-  - Create an "apple-app-site-association" file that contains JSON data about the URLs that your app can handle.
-    The file should be added on your domain's root or /.well-known/ directory (for example: https://www.yourdomain.com/apple-app-site-association or https://www.yourdomain.com/.well-known/apple-app-site-association)
+	for iOS 12 and above: 
+  	- Create an "apple-app-site-association" file that contains JSON data about the URLs that your app can handle.
+    	The file should be added on your domain's root or /.well-known/ directory (for example: https://www.yourdomain.com/apple-app-site-association or https://www.yourdomain.com/.well-known/apple-app-site-association)
   
-  - Create a "com.apple.developer.associated-domains" entitlement that you add to your app (details here: https://developer.apple.com/library/archive/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW2)
+  	- Create a "com.apple.developer.associated-domains" entitlement that you add to your app (details here: https://developer.apple.com/library/archive/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW2)
     
-    (this example is just for illustration purposes):
+    	(this example is just for illustration purposes):
     
-    {
-	      "activitycontinuation": {
-		        "apps": [
-			          "your-app-ID.com.example.app"
+  	{
+  		"activitycontinuation": {
+			"apps": [
+				"your-app-ID.com.example.app"
 		        ]
-	      },
-	      "applinks": {
+	      	},
+	      	"applinks": {
 		        "apps": [],
 		        "details": [{
 			        "appID": "your-app-ID.com.example.app",
-			        "paths": [ "*", "/" ]
+			        "paths": [ "*", "/", "/example-path/*", "NOT /prviate-direcotry/*" ]
 		        }]
 	      }
-  }
+ 	}
   
-  for iOS 12 and below: Create and add the "apple-app-site-association" file (this example is just for illustration purposes):
+  	for iOS 12 and below: Create and add the "apple-app-site-association" file (this example is just for illustration purposes):
   
-   {
-	      "applinks": {
-		        "apps": [],
+   	{
+		"applinks": {
+			"apps": [],
 		        "details": [{
-			          "appID": "your-app-ID.com.example.app",
-			          "paths": [ "*", "/", "/example-path/*", "NOT /help/*" ]
+				"appID": "your-app-ID.com.example.app",
+				"paths": [ "*", "/", "/example-path/*", "NOT /prviate-direcotry/*" ]
 		        }]
-	      },
-	      "webcredentials": {
+	      	},
+	      	"webcredentials": {
 		        "apps": ["your-app-ID.com.example.app"]
-	      }
-  }
+	      	}
+  	}
   
-  for Android (6.0 or higher):
+  	for Android (6.0 or higher):
   
-    - Create a Digital Asset Links JSON file "assetlinks.json
-    The file should be added on your /.well-known/ directory (for example: https://www.yourdomain.com/.well-known/assetlinks.json)
+    	- Create a Digital Asset Links JSON file "assetlinks.json
+    	The file should be added on your /.well-known/ directory (for example: https://www.yourdomain.com/.well-known/assetlinks.json)
     
-    (this example is just for illustration purposes):
+    	(this example is just for illustration purposes):
     
-    [{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target" : { "namespace": "android_app", "package_name": "com.example.app",
-      "sha256_cert_fingerprints": ["hash_of_app_certificate"] }
-    }]
+    	[{
+		"relation": ["delegate_permission/common.handle_all_urls"],
+      		"target" : { "namespace": "android_app", "package_name": "com.example.app",
+      		"sha256_cert_fingerprints": ["hash_of_app_certificate"] }
+    	}]
     
-    DETAILS: https://developer.android.com/training/app-links/verify-site-associations
+    	DETAILS: https://developer.android.com/training/app-links/verify-site-associations
     
-    - Add an intent filter for deep links:
+    	- Add an intent filter for deep links:
     
-    <intent-filter android:autoVerify="true">
-      <action android:name="android.intent.action.VIEW"/>
-      <category android:name="android.intent.category.DEFAULT"/>
-      <category android:name="android.intent.category.BROWSABLE"/>
-      <data android:host="example.com/link" android:scheme="http"/>
-      <data android:host="example.com/link" android:scheme="https"/>
-    </intent-filter>
+    	<intent-filter android:autoVerify="true">
+      		<action android:name="android.intent.action.VIEW"/>
+      		<category android:name="android.intent.category.DEFAULT"/>
+      		<category android:name="android.intent.category.BROWSABLE"/>
+      		<data android:host="example.com/link" android:scheme="http"/>
+      		<data android:host="example.com/link" android:scheme="https"/>
+    	</intent-filter>

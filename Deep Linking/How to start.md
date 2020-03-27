@@ -15,7 +15,7 @@
     
 2. Add support for Universal Links (iOS)
 
-	Go to Handling Links details: https://github.com/unboxedagency/mobile-app-analytics/blob/master/Deep%20Linking/HandlingLinks
+	Go to Handling Links details: https://github.com/unboxedagency/mobile-app-analytics/blob/master/Deep%20Linking/Handling%20Links
 	
 	*** Official documentation
 

@@ -64,7 +64,7 @@
 		        "apps": [],
 		        "details": [{
 			        "appID": "your-app-ID.com.example.app",
-			        "paths": [ "*", "/", "/example-path/*", "NOT /prviate-direcotry/*" ]
+			        "paths": [ "*", "/", "/example-path/*", "NOT /private-directory/*" ]
 		        }]
 	      }
  	}
@@ -76,7 +76,7 @@
 			"apps": [],
 		        "details": [{
 				"appID": "your-app-ID.com.example.app",
-				"paths": [ "*", "/", "/example-path/*", "NOT /prviate-direcotry/*" ]
+				"paths": [ "*", "/", "/example-path/*", "NOT /private-directory/*" ]
 		        }]
 	      	},
 	      	"webcredentials": {

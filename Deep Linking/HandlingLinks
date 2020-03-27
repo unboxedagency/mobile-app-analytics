@@ -1,0 +1,80 @@
+1. Enable Dynamic Links
+
+	> If SDK update is completed (https://github.com/unboxedagency/mobile-app-analytics/blob/master/Firebase/FirebaseSDK(Pods)) then Dynamic Links are enabled, in particular:
+  
+     	for iOS: pod 'Firebase/DynamicLinks' (add this even if we use other deep linking solutions)
+
+      	for Android: com.google.firebase:firebase-dynamic-links:{{VERSION}}
+ 
+2. Add support for Universal Links (iOS)
+
+  	- Create an "apple-app-site-association" file that contains JSON data about the URLs that your app can handle. The file should be added on your domain's root or /.well-known/ directory (for example: https://www.yourdomain.com/apple-app-site-association or https://www.yourdomain.com/.well-known/apple-app-site-association)
+  
+  	- Create a "com.apple.developer.associated-domains" entitlement that you add to your app (details here: https://developer.apple.com/library/archive/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW2)
+    
+    // for iOS 12 and above
+    
+  	{
+  		"activitycontinuation": {
+			"apps": [
+				"your-app-ID.com.example.app"
+		        ]
+	      	},
+	      	"applinks": {
+		        "apps": [],
+		        "details": [{
+			        "appID": "your-app-ID.com.example.app",
+			        "paths": [
+						"NOT /private-directory/*",
+				 		"/example-path/*",
+						"/",
+						"*"
+					]
+				}]
+	      }
+ 	}
+  
+  	// for iOS below 12
+  
+   	{
+		"applinks": {
+			"apps": [],
+		        "details": [{
+					"appID": "your-app-ID.com.example.app",
+					"paths": [
+						"NOT /private-directory/*",
+				 		"/example-path/*",
+						"/",
+						"*"
+					]
+		        }]
+	      	},
+	      	"webcredentials": {
+		        "apps": ["your-app-ID.com.example.app"]
+	      	}
+  	}
+  
+  3. Add support App Links (Android 6.0 or higher):
+  
+    	- Create a Digital Asset Links JSON file "assetlinks.json
+    	The file should be added on your /.well-known/ directory (for example: https://www.yourdomain.com/.well-known/assetlinks.json)
+    
+    	(this example is just for illustration purposes):
+    
+    	[{
+		"relation": ["delegate_permission/common.handle_all_urls"],
+      		"target" : { "namespace": "android_app", "package_name": "com.example.app",
+      		"sha256_cert_fingerprints": ["hash_of_app_certificate"] }
+    	}]
+    
+    	DETAILS: https://developer.android.com/training/app-links/verify-site-associations
+    
+    	- Add an intent filter for deep links:
+    
+    	<intent-filter android:autoVerify="true">
+      		<action android:name="android.intent.action.VIEW"/>
+      		<category android:name="android.intent.category.DEFAULT"/>
+      		<category android:name="android.intent.category.BROWSABLE"/>
+      		<data android:host="example.com/link" android:scheme="http"/>
+      		<data android:host="example.com/link" android:scheme="https"/>
+    	</intent-filter>

@@ -23,6 +23,8 @@
 	
 	- Create an "apple-app-site-association" file that contains JSON data about the URLs that your app can handle. The file should be added on your domain's root or /.well-known/ directory (for example: https://www.istegelsin.com/apple-app-site-association or https://www.istegelsin.com/.well-known/apple-app-site-association)
 
+	- Further reading: https://medium.com/@abhimuralidharan/universal-links-in-ios-79c4ee038272
+	
 3.  Add support App Links (Android)
 
 	- Create intent filters in your manifest

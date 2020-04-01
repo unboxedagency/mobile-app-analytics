@@ -1,0 +1,424 @@
+Firebase Events (Objective-C)
+
+
+>>> Default Events >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+// AppOpen (this is a new Event we'll use it for Attribution purposes)
+
+NSDictionary *params = @{
+	kFIRParameterCampaign : Campaign, 
+	kFIRParameterSource : Source, 
+	kFIRParameterMedium : Medium
+};
+
+
+// Login
+
+	NSDictionary *params = @{
+		kFIRParameterMethod : Method
+	};
+
+	[FIRAnalytics logEventWithName:kFIREventLogin
+		parameters: params
+	];
+
+
+// Search
+
+	NSDictionary *params = @{
+		kFIRParameterMethod : SearchTerm
+	};
+
+	[FIRAnalytics logEventWithName:kFIREventSearch
+		parameters: params
+	];
+
+
+// SelectItem (to be used for non-product related pages, for example Account)
+
+	NSDictionary *params = @{
+		kFIRParameterItems : @[
+			@{
+				kFIRParameterItemID : ItemID, 
+				kFIRParameterItemName : ItemName, 
+				kFIRParameterItemCategory : ItemCategory,
+				kFIRParameterItemListName : ItemListName
+			},
+		]
+	};
+
+	[FIRAnalytics logEventWithName:kFIREventSelectContent
+		parameters: params
+	];
+
+
+// SignUp
+
+	NSDictionary *params = @{
+		kFIRParameterMethod : Method
+	};
+
+	[FIRAnalytics logEventWithName:kFIREventSignUp
+		parameters: params
+	];
+
+
+// TutorialBegin
+
+	[FIRAnalytics logEventWithName:kFIREventTutorialBegin
+		parameters: nil
+	];
+
+
+// TutorialComplete
+
+	[FIRAnalytics logEventWithName:kFIREventTutorialComplete
+		parameters: nil
+	];
+
+
+>>> Ecommerce Events >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+// AddPaymentInfo (use this at the Checkout)
+
+	NSDictionary *params = @{
+		kFIRParameterItems : @[
+			// Create for each product
+			@{
+				kFIRParameterItemID : ItemID, 
+				kFIRParameterItemName : ItemName,
+				kFIRParameterItemBrand : ItemBrand,
+				kFIRParameterItemCategory : ItemCategory,
+				kFIRParameterItemCategory2 : ItemCategory2,
+				// kFIRParameterItemCategory3 : ItemCategory3,
+				// kFIRParameterItemCategory4 : ItemCategory4,
+				// kFIRParameterItemCategory5 : ItemCategory5,
+				kFIRParameterItemListName : ItemListName,
+				kFIRParameterIndex : Index,
+				kFIRParameterItemVariant : ItemVariant,
+				kFIRParameterQuantity : Quantity, 
+				kFIRParameterPrice : Price, 
+				kFIRParameterCurrency : Currency
+			},
+		],
+		kFIRParameterPaymentType: PaymentType,
+		kFIRParameterBankName : BankName,
+		kFIRParameterCurrency : Currency,
+		kFIRParameterValue : Value
+	};
+
+	[FIRAnalytics logEventWithName:kFIREventAddPaymentInfo
+		parameters: params
+	];
+	
+
+// AddShippingInfo (new Event, replacing CheckoutProgress)
+
+	NSDictionary *params = @{
+		kFIRParameterItems : @[
+			// Create for each product
+			@{
+				kFIRParameterItemID : ItemID, 
+				kFIRParameterItemName : ItemName,
+				kFIRParameterItemBrand : ItemBrand,
+				kFIRParameterItemCategory : ItemCategory,
+				kFIRParameterItemCategory2 : ItemCategory2,
+				// kFIRParameterItemCategory3 : ItemCategory3,
+				// kFIRParameterItemCategory4 : ItemCategory4,
+				// kFIRParameterItemCategory5 : ItemCategory5,
+				kFIRParameterItemListName : ItemListName,
+				kFIRParameterIndex : Index,
+				kFIRParameterItemVariant : ItemVariant,
+				kFIRParameterQuantity : Quantity, 
+				kFIRParameterPrice : Price, 
+				kFIRParameterCurrency : Currency
+			},
+		],
+		kFIRParameterShippingTier : ShippingTier,
+		kFIRParameterCurrency : Currency,
+		kFIRParameterValue : Value
+	};
+
+	[FIRAnalytics logEventWithName:kFIREventAddShippingInfo
+		parameters: params
+	];
+
+
+// AddToCart
+
+	NSDictionary *params = @{
+		kFIRParameterItems : @[
+			@{
+				kFIRParameterItemID : ItemID, 
+				kFIRParameterItemName : ItemName,
+				kFIRParameterItemBrand : ItemBrand,
+				kFIRParameterItemCategory : ItemCategory,
+				kFIRParameterItemCategory2 : ItemCategory2,
+				// kFIRParameterItemCategory3 : ItemCategory3,
+				// kFIRParameterItemCategory4 : ItemCategory4,
+				// kFIRParameterItemCategory5 : ItemCategory5,
+				kFIRParameterItemListName : ItemListName,
+				kFIRParameterIndex : Index,
+				kFIRParameterItemVariant : ItemVariant,
+				kFIRParameterQuantity : Quantity, 
+				kFIRParameterPrice : Price, 
+				kFIRParameterCurrency : Currency
+			},
+		],
+		kFIRParameterCurrency : Currency,
+		kFIRParameterValue : Value
+	};
+
+	[FIRAnalytics logEventWithName:kFIREventAddToCart
+		parameters: params
+	];
+
+
+// AddToWishlist
+
+	NSDictionary *params = @{
+		kFIRParameterItems : @[
+			@{
+				kFIRParameterItemID : ItemID, 
+				kFIRParameterItemName : ItemName,
+				kFIRParameterItemBrand : ItemBrand,
+				kFIRParameterItemCategory : ItemCategory,
+				kFIRParameterItemCategory2 : ItemCategory2,
+				// kFIRParameterItemCategory3 : ItemCategory3,
+				// kFIRParameterItemCategory4 : ItemCategory4,
+				// kFIRParameterItemCategory5 : ItemCategory5,
+				kFIRParameterItemListName : ItemListName,
+				kFIRParameterIndex : Index,
+				kFIRParameterItemVariant : ItemVariant,
+				kFIRParameterQuantity : Quantity, 
+				kFIRParameterPrice : Price, 
+				kFIRParameterCurrency : Currency
+			},
+		],
+		kFIRParameterCurrency : Currency,
+		kFIRParameterValue : Value
+	};
+
+	[FIRAnalytics logEventWithName:kFIREventAddToWishList
+		parameters: params
+	];
+
+
+[FIRAnalytics logEventWithName:kFIREventAppOpen
+	parameters: params
+];
+
+
+// BeginCheckout
+
+	NSDictionary *params = @{
+		kFIRParameterItems : @[
+			// Create for each product
+			@{
+				kFIRParameterItemID : ItemID, 
+				kFIRParameterItemName : ItemName,
+				kFIRParameterItemBrand : ItemBrand,
+				kFIRParameterItemCategory : ItemCategory,
+				kFIRParameterItemCategory2 : ItemCategory2,
+				// kFIRParameterItemCategory3 : ItemCategory3,
+				// kFIRParameterItemCategory4 : ItemCategory4,
+				// kFIRParameterItemCategory5 : ItemCategory5,
+				kFIRParameterItemListName : ItemListName,
+				kFIRParameterIndex : Index,
+				kFIRParameterItemVariant : ItemVariant,
+				kFIRParameterQuantity : Quantity, 
+				kFIRParameterPrice : Price, 
+				kFIRParameterCurrency : Currency
+			},
+		],
+		kFIRParameterCurrency : Currency,
+		kFIRParameterValue : Value
+	};
+
+	[FIRAnalytics logEventWithName:kFIREventBeginCheckout
+		parameters: params
+	];
+
+
+// Purchase
+
+	NSDictionary *params = @{
+		kFIRParameterItems : @[
+			// Create for each product (also for the same products with Quantity > 1)
+			@{
+				kFIRParameterItemID : ItemID, 
+				kFIRParameterItemName : ItemName,
+				kFIRParameterItemBrand : ItemBrand,
+				kFIRParameterItemCategory : ItemCategory,
+				kFIRParameterItemCategory2 : ItemCategory2,
+				// kFIRParameterItemCategory3 : ItemCategory3,
+				// kFIRParameterItemCategory4 : ItemCategory4,
+				// kFIRParameterItemCategory5 : ItemCategory5,
+				kFIRParameterItemListName : ItemListName,
+				kFIRParameterIndex : Index,
+				kFIRParameterItemVariant : ItemVariant,
+				kFIRParameterQuantity : Quantity, 
+				kFIRParameterPrice : Price, 
+				kFIRParameterCurrency : Currency
+			},
+		],
+		kFIRParameterTransactionID : TransactionID,
+		kFIRParameterTax : Tax,
+		kFIRParameterShipping : Shipping,
+		kFIRParameterLocation : Location,	
+		kFIRParameterCoupon : Coupon,
+		kFIRParameterAffiliation : Affiliation,
+		kFIRParameterCurrency : Currency,
+		kFIRParameterValue : Value
+	};
+
+	[FIRAnalytics logEventWithName:kFIREventPurchase
+		parameters: params
+	];
+
+	
+// RemoveFromCart (Quantity can more than one when 'Sil' option is selected)
+
+	NSDictionary *params = @{
+		kFIRParameterItems : @[
+			@{
+				kFIRParameterItemID : ItemID, 
+				kFIRParameterItemName : ItemName,
+				kFIRParameterItemBrand : ItemBrand,
+				kFIRParameterItemCategory : ItemCategory,
+				kFIRParameterItemCategory2 : ItemCategory2,
+				// kFIRParameterItemCategory3 : ItemCategory3,
+				// kFIRParameterItemCategory4 : ItemCategory4,
+				// kFIRParameterItemCategory5 : ItemCategory5,
+				kFIRParameterItemListName : ItemListName,
+				kFIRParameterIndex : Index,
+				kFIRParameterItemVariant : ItemVariant,
+				kFIRParameterQuantity : Quantity, 
+				kFIRParameterPrice : Price, 
+				kFIRParameterCurrency : Currency
+			},
+		],
+		kFIRParameterCurrency : Currency,
+		kFIRParameterValue : Value
+	};
+
+	[FIRAnalytics logEventWithName:kFIREventRemoveFromCart
+		parameters: params
+	];
+	
+
+// SelectPromotion (to be used ONLY for campaign related pages)
+
+	NSDictionary *params = @{
+		kFIRParameterItems : @[
+			// Create for each product (lazy load available)
+			@{
+				kFIRParameterItemID : ItemID, 
+				kFIRParameterItemName : ItemName,
+				kFIRParameterItemBrand : ItemBrand,
+				kFIRParameterItemCategory : ItemCategory,
+				kFIRParameterItemCategory2 : ItemCategory2,
+				// kFIRParameterItemCategory3 : ItemCategory3,
+				// kFIRParameterItemCategory4 : ItemCategory4,
+				// kFIRParameterItemCategory5 : ItemCategory5,
+				kFIRParameterItemListName : ItemListName,
+				kFIRParameterIndex : Index,
+				kFIRParameterItemVariant : ItemVariant,
+				kFIRParameterQuantity : Quantity, 
+				kFIRParameterPrice : Price, 
+				kFIRParameterCurrency : Currency
+			},
+		],
+		kFIRParameterPromotionID : PromotionID, 
+		kFIRParameterPromotionName : PromotionName
+	};
+
+	[FIRAnalytics logEventWithName:kFIREventSelectPromotion
+		parameters: params
+	];
+
+
+// ViewCart (trigger when users see the Basket)
+
+	NSDictionary *params = @{
+		kFIRParameterCurrency : Currency,
+		kFIRParameterValue : Value
+	};
+
+	[FIRAnalytics logEventWithName:kFIREventViewCart
+		parameters: params
+	];
+	
+	
+// ViewItem (to be used ONLY for product related pages)
+
+	NSDictionary *params = @{
+		kFIRParameterItems : @[
+			@{
+				kFIRParameterItemID : ItemID, 
+				kFIRParameterItemName : ItemName,
+				kFIRParameterItemBrand : ItemBrand,
+				kFIRParameterItemCategory : ItemCategory,
+				kFIRParameterItemCategory2 : ItemCategory2,
+				// kFIRParameterItemCategory3 : ItemCategory3,
+				// kFIRParameterItemCategory4 : ItemCategory4,
+				// kFIRParameterItemCategory5 : ItemCategory5,
+				kFIRParameterItemListName : ItemListName,
+				kFIRParameterIndex : Index,
+				kFIRParameterItemVariant : ItemVariant,
+				kFIRParameterQuantity : Quantity, 
+				kFIRParameterPrice : Price, 
+				kFIRParameterCurrency : Currency
+			},
+		],
+		kFIRParameterCurrency : Currency,
+		kFIRParameterValue : Value
+	};
+
+	[FIRAnalytics logEventWithName:kFIREventViewItem
+		parameters: params
+	];
+	
+	
+// ViewItemList (to be used ONLY for product related pages, for example Product Category/Subcategory)
+
+	NSDictionary *params = @{
+		kFIRParameterItems : @[
+			// Create for each product (lazy load available)
+			@{
+				kFIRParameterItemID : ItemID, 
+				kFIRParameterItemName : ItemName,
+				kFIRParameterItemBrand : ItemBrand,
+				kFIRParameterItemCategory : ItemCategory,
+				kFIRParameterItemCategory2 : ItemCategory2,
+				// kFIRParameterItemCategory3 : ItemCategory3,
+				// kFIRParameterItemCategory4 : ItemCategory4,
+				// kFIRParameterItemCategory5 : ItemCategory5,
+				kFIRParameterItemListName : ItemListName,
+				kFIRParameterIndex : Index,
+				kFIRParameterItemVariant : ItemVariant,
+				kFIRParameterQuantity : Quantity, 
+				kFIRParameterPrice : Price, 
+				kFIRParameterCurrency : Currency
+			},
+		]
+	};
+
+	[FIRAnalytics logEventWithName:kFIREventViewItemList
+		parameters: params
+	];
+	
+	
+// ViewPromotion (to be used ONLY for campaign related pages)
+
+	NSDictionary *params = @{
+		kFIRParameterPromotionID : PromotionID, 
+		kFIRParameterPromotionName : PromotionName,
+		kFIRParameterCreativeSlot : CreativeSlot
+	};
+
+	[FIRAnalytics logEventWithName:kFIREventViewPromotion
+		parameters: params
+	];

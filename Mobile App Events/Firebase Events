@@ -35,7 +35,7 @@ NSDictionary *params = @{
 	];
 
 
-// SelectItem (to be used for non-product related pages, for example Account)
+// SelectItem (to be used for non-product related pages, for example Account or Shopping Lists)
 
 	NSDictionary *params = @{
 		kFIRParameterItems : @[
@@ -333,7 +333,7 @@ NSDictionary *params = @{
 		],
 		kFIRParameterPromotionID : PromotionID, 
 		kFIRParameterPromotionName : PromotionName
-	};
+	};	
 
 	[FIRAnalytics logEventWithName:kFIREventSelectPromotion
 		parameters: params

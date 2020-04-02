@@ -1,0 +1,23 @@
+{
+	"activitycontinuation": {
+		"apps": [
+			"AXAFitTEAM.com.axa.axasagligim.tr"
+			]
+	},
+	"applinks": {
+		"apps": [],
+		"details": [{
+			"appID": "AXAFitTEAM.com.axa.axasagligim.tr",
+			"paths": [
+				"NOT /private-directory/*",
+				"/example-path/*",
+				"/",
+				"*"
+			]
+		}]
+	},
+	,
+	"webcredentials": {
+		"apps": ["Q5UY792NWK.com.istegelsin.ios"]
+	}
+}
